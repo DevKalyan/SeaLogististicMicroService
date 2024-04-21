@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SLM.User.Infrastructure.Persistence.FluentApiConfigurations
 {
-    public class UserTypeConfiguration : IEntityTypeConfiguration<UserTypeEntity>
+    public class UserTypeConfiguration : BaseEntityConfiguration<UserTypeEntity>
     {
         public void Configure(EntityTypeBuilder<UserTypeEntity> builder)
         {
@@ -19,6 +19,7 @@ namespace SLM.User.Infrastructure.Persistence.FluentApiConfigurations
 
             builder.Property(u => u.TypeName).HasColumnName("typeName").HasColumnType("varchar").HasMaxLength(50).IsRequired();
             builder.Property(u => u.Description).HasColumnName("userName").HasColumnType("varchar").HasMaxLength(100).IsRequired();
-            
+
+        }
     }
 }

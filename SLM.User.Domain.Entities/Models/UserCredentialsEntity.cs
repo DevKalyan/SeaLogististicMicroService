@@ -10,12 +10,12 @@ namespace SLM.User.Domain.Entities.Models
     {
 
         public string Username { get; set; }
-        public string PasswordHash { get; set; }
+        public string HashedPassword { get; set; }
         public int PasswordChanged { get; set; }
         public DateTime DtPasswordChanged { get; set; }
 
         // Relation ship
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         public UserEntity User { get; set; }
 
     }

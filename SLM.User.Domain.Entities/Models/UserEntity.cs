@@ -19,9 +19,9 @@ namespace SLM.User.Domain.Entities.Models
         public DateTime DateOfBirth { get; set; }
 
         // Relation ship
-        public int UserTypeId { get; set; }
+        public Guid UserTypeId { get; set; }
         public UserTypeEntity UserType { get; set; }
-        public int DesignationId { get; set; }
+        public Guid DesignationId { get; set; }
         public DesignationEntity Designation { get; set; }
 
         public UserCredentialEntity UserCredential { get; set; }

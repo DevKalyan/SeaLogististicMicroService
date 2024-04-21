@@ -13,6 +13,6 @@ namespace SLM.User.Domain.Interfaces
         Task<List<DesignationEntity>> GetAllDesignationsAsync();
         Task AddNewDesignationAsync(DesignationEntity designation);
         Task UpdateExistingDesignationAsync(DesignationEntity designation);
-        Task DeleteDesigntationAsync(DesignationEntity designation);
+        Task DeleteDesigntationAsync(Guid designationid);
     }
 }

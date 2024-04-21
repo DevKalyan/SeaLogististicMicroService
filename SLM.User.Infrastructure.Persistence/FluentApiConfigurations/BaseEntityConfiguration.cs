@@ -9,11 +9,14 @@ using SLM.User.Domain.Entities.Models;
 
 namespace SLM.User.Infrastructure.Persistence.FluentApiConfigurations
 {
-    public class BaseEntityConfiguration : IEntityTypeConfiguration<BaseEntity>
+    public class BaseEntityConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : BaseEntity
     {
-        public void Configure(EntityTypeBuilder<BaseEntity> builder)
+        public void Configure(EntityTypeBuilder<TEntity> builder)
         {
+            builder.HasKey(e => e.EntityID);
+
             // Configure base entity properties
+            builder.Property(b => b.EntityID).HasColumnName("EntityID").HasColumnType("uniqueidentifier").IsRequired();
             builder.Property(b => b.CreatedAt).HasColumnName("CreatedAt").HasColumnType("datetime2").IsRequired();
             builder.Property(b => b.CreatedBy).HasColumnName("CreatedBy").HasColumnType("uniqueidentifier").IsRequired();
             builder.Property(b => b.UpdatedAt).HasColumnName("UpdatedAt").HasColumnType("datetime2");

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SLM.User.Application.Interfaces\SLM.User.Application.Interfaces.csproj" />
     <ProjectReference Include="..\SLM.User.Domain.Entities\SLM.User.Domain.Entities.csproj" />
     <ProjectReference Include="..\SLM.User.Domain.Interfaces\SLM.User.Domain.Interfaces.csproj" />
   </ItemGroup>

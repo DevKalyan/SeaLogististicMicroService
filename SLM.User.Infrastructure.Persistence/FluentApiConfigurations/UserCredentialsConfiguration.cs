@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace SLM.User.Infrastructure.Persistence.FluentApiConfigurations
 {
-    public class UserCredentialsConfiguration : IEntityTypeConfiguration<UserCredentialEntity>
+    public class UserCredentialsConfiguration : BaseEntityConfiguration<UserCredentialEntity>
     {
-        public void Configure(EntityTypeBuilder<UserCredentialEntity> builder)
+        public  void Configure(EntityTypeBuilder<UserCredentialEntity> builder)
         {
 
             builder.ToTable("dbo.TblUserCredentialDetail");
@@ -20,15 +20,8 @@ namespace SLM.User.Infrastructure.Persistence.FluentApiConfigurations
 
             builder.Property(u => u.UserId).HasColumnName("userId").HasColumnType("uniqueidentifier").IsRequired();
             builder.Property(u => u.Username).HasColumnName("userName").HasColumnType("varchar").HasMaxLength(50).IsRequired();
-            builder.Property(u => u.PasswordHash).HasColumnName("passsword").HasColumnType("varchar").HasMaxLength(50).IsRequired();
-            builder.Property(u => u.DtPasswordChanged).HasColumnName("passwordChangedDt").HasColumnType("datetime2");
-
-            
-
-           
-
-
-
+            builder.Property(u => u.HashedPassword).HasColumnName("passsword").HasColumnType("varchar").HasMaxLength(50).IsRequired();
+            builder.Property(u => u.DtPasswordChanged).HasColumnName("passwordChangedDt").HasColumnType("datetime2");      
         }
     }
 }

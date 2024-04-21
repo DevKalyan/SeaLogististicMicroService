@@ -13,6 +13,6 @@ namespace SLM.User.Domain.Interfaces
         Task<List<UserTypeEntity>> GetAllUserTypesAsync();
         Task AddNewUserTypeAsync(UserTypeEntity user);
         Task UpdateExistingUsertypeAsync(UserTypeEntity user);
-        Task DeleteUserTypeAsync(UserTypeEntity user);
+        Task DeleteUserTypeAsync(Guid usertypeid);
     }
 }
