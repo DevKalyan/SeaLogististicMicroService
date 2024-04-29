@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace SLM.User.Domain.Interfaces
 {
-    public interface IMenuEnttiyRepository
+    public interface IMenuEntityRepository
     {   
-        Task AddNewDesignationAsync(MenuEntity menu);
-        Task UpdateExistingDesignationAsync(MenuEntity menu);
-        Task DeleteDesigntationAsync(MenuEntity menu);
+        Task AddNewMenuAsync(MenuEntity menu);
+        Task UpdateExistingMenuAsync(MenuEntity menu);
+        Task DeleteMenuByMenuIdAsync(string menucode);
     }
 }

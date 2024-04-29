@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SLM.User.Infrastructure.Persistence.FluentApiConfigurations
 {
-    public class UserMenusConfiguration : IEntityTypeConfiguration<UserMenusEntity>
+    public class UserMenusConfiguration : BaseEntityConfiguration<UserMenusEntity>
     {
         public void Configure(EntityTypeBuilder<UserMenusEntity> builder)
         {

@@ -10,7 +10,11 @@ namespace SLM.User.Domain.Interfaces
     public interface IUserCredentialsEntityRepostiory
     {
         Task<UserCredentialEntity> ValidateUser(string username,string password);
-        //Task<List<UserEntity>> GetUserBasicDetailsAsync();
+
+        Task<UserCredentialEntity> GetUserCredentialsByUsernameAsync(string username);
+
+        Task<UserCredentialEntity> GetUserCredentialsByUserIdAsync(Guid userid);
+
         Task AddUserCredentialDetailsAsync(UserCredentialEntity user);
         Task UpdateUserCredentialDetailsAsync(UserCredentialEntity user);
         Task DeleteUserCredentialDetailsAsync(UserCredentialEntity user);

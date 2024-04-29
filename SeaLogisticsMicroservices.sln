@@ -7,23 +7,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserManagementApi", "UserMa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A94C1969-FB9E-4B2E-A2F1-1919A3BE7ACC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLM.User.Domain.Entities", "SLM.User.Domain.Entities\SLM.User.Domain.Entities.csproj", "{08E78D08-2CB3-4854-917C-1C007E7936A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLM.User.Domain.Entities", "SLM.User.Domain.Entities\SLM.User.Domain.Entities.csproj", "{08E78D08-2CB3-4854-917C-1C007E7936A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLM.User.Domain.Interfaces", "SLM.User.Domain.Interfaces\SLM.User.Domain.Interfaces.csproj", "{66B49424-81DD-4454-8A43-501522A4A6DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLM.User.Domain.Interfaces", "SLM.User.Domain.Interfaces\SLM.User.Domain.Interfaces.csproj", "{66B49424-81DD-4454-8A43-501522A4A6DE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{73374B3B-6379-48D7-9901-1E00E167506A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLM.User.Application.Interfaces", "SLM.User.Application.Interfaces\SLM.User.Application.Interfaces.csproj", "{15D67CB3-C567-43C6-8197-3BCE9BCB60E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLM.User.Application.Interfaces", "SLM.User.Application.Interfaces\SLM.User.Application.Interfaces.csproj", "{15D67CB3-C567-43C6-8197-3BCE9BCB60E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLM.User.Application.Services", "SLM.User.Application.Services\SLM.User.Application.Services.csproj", "{48EAC6CF-1E16-453D-8782-ABA286BE3AF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLM.User.Application.Services", "SLM.User.Application.Services\SLM.User.Application.Services.csproj", "{48EAC6CF-1E16-453D-8782-ABA286BE3AF6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{445273DC-FD5E-494B-B876-82AD1BFEBD4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLM.User.Infrastructure.Persistence", "SLM.User.Infrastructure.Persistence\SLM.User.Infrastructure.Persistence.csproj", "{B9E4BE9A-09CB-4900-98A9-732CC6B4E7B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLM.User.Infrastructure.Persistence", "SLM.User.Infrastructure.Persistence\SLM.User.Infrastructure.Persistence.csproj", "{B9E4BE9A-09CB-4900-98A9-732CC6B4E7B7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{446CB6FA-93F0-4187-806F-266E69039EAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeaLogistics.Services.Api", "SeaLogistics.Services.Api\SeaLogistics.Services.Api.csproj", "{6235B1BA-14DB-44BD-9505-B7C0E12AA063}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{03AFD034-E6C8-45AB-A4C3-38E4300E6016}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLM.User.Testing", "SLM.User.Testing\SLM.User.Testing.csproj", "{4805788F-38EB-4343-9DB2-255CD62D6BC3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLM.User.Service.Api", "SLM.User.Service.Api\SLM.User.Service.Api.csproj", "{FF37532F-832E-4AAB-BC44-9D4954FFAEE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLM.User.Application.Utilities", "SLM.User.Application.Utilities\SLM.User.Application.Utilities.csproj", "{40B1F2B1-260C-447C-8054-E9FEEA9E90AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +57,18 @@ Global
 		{B9E4BE9A-09CB-4900-98A9-732CC6B4E7B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9E4BE9A-09CB-4900-98A9-732CC6B4E7B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9E4BE9A-09CB-4900-98A9-732CC6B4E7B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6235B1BA-14DB-44BD-9505-B7C0E12AA063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6235B1BA-14DB-44BD-9505-B7C0E12AA063}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6235B1BA-14DB-44BD-9505-B7C0E12AA063}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6235B1BA-14DB-44BD-9505-B7C0E12AA063}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4805788F-38EB-4343-9DB2-255CD62D6BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4805788F-38EB-4343-9DB2-255CD62D6BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4805788F-38EB-4343-9DB2-255CD62D6BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4805788F-38EB-4343-9DB2-255CD62D6BC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF37532F-832E-4AAB-BC44-9D4954FFAEE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF37532F-832E-4AAB-BC44-9D4954FFAEE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF37532F-832E-4AAB-BC44-9D4954FFAEE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF37532F-832E-4AAB-BC44-9D4954FFAEE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40B1F2B1-260C-447C-8054-E9FEEA9E90AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40B1F2B1-260C-447C-8054-E9FEEA9E90AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40B1F2B1-260C-447C-8054-E9FEEA9E90AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40B1F2B1-260C-447C-8054-E9FEEA9E90AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,7 +83,10 @@ Global
 		{445273DC-FD5E-494B-B876-82AD1BFEBD4F} = {0E6A8C8B-8D86-4181-93EF-77AC989FA91C}
 		{B9E4BE9A-09CB-4900-98A9-732CC6B4E7B7} = {445273DC-FD5E-494B-B876-82AD1BFEBD4F}
 		{446CB6FA-93F0-4187-806F-266E69039EAA} = {0E6A8C8B-8D86-4181-93EF-77AC989FA91C}
-		{6235B1BA-14DB-44BD-9505-B7C0E12AA063} = {446CB6FA-93F0-4187-806F-266E69039EAA}
+		{03AFD034-E6C8-45AB-A4C3-38E4300E6016} = {0E6A8C8B-8D86-4181-93EF-77AC989FA91C}
+		{4805788F-38EB-4343-9DB2-255CD62D6BC3} = {03AFD034-E6C8-45AB-A4C3-38E4300E6016}
+		{FF37532F-832E-4AAB-BC44-9D4954FFAEE6} = {446CB6FA-93F0-4187-806F-266E69039EAA}
+		{40B1F2B1-260C-447C-8054-E9FEEA9E90AE} = {73374B3B-6379-48D7-9901-1E00E167506A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {253F4ADC-B74A-4609-954A-083712C8A869}

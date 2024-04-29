@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SLM.User.Domain.Entities.Models;
+using SLM.User.Infrastructure.Persistence.Extensions;
 using SLM.User.Infrastructure.Persistence.FluentApiConfigurations;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,11 @@ namespace SLM.User.Infrastructure.Persistence.Context
 {
     public class UserManagementContext : DbContext
     {
+        public UserManagementContext(DbContextOptions<UserManagementContext> options)
+            : base(options)
+        {
+        }
+       
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<UserCredentialEntity> UserCredentials { get; set; }
         public DbSet<UserMenusEntity> UserMenus { get; set; }        
@@ -33,7 +39,8 @@ namespace SLM.User.Infrastructure.Persistence.Context
             modelBuilder.ApplyConfiguration(new MenuItemConfiguration());
 
             // Apply BaseEntityConfiguration last This is because the ApplyConfiguration method applies the configuration to the ModelBuilder in the order it's called and avoid overidden
-            modelBuilder.ApplyConfiguration(new BaseEntityConfiguration());
+            //modelBuilder.ApplyConfiguration(new BaseEntityConfiguration());
+            modelBuilder.Seed();
         }
     }
 }

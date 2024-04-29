@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SLM.User.Infrastructure.Persistence.FluentApiConfigurations
 {
-    public class UserEntityConfiguration : IEntityTypeConfiguration<UserEntity>
+    public class UserEntityConfiguration : BaseEntityConfiguration<UserEntity>
     {
         public void Configure(EntityTypeBuilder<UserEntity> builder)
         {
@@ -28,8 +28,8 @@ namespace SLM.User.Infrastructure.Persistence.FluentApiConfigurations
             builder.Property(u => u.DateOfBirth).HasColumnName("dateOfBirth").HasColumnType("datetime2").IsRequired();
 
             // Relation Ships
-            builder.HasOne(ut => ut.UserType).WithMany().HasForeignKey(ut => ut.UserTypeId);
-            builder.HasOne(ut => ut.Designation).WithMany().HasForeignKey(ut => ut.DesignationId);
+            //builder.HasOne(ut => ut.UserType).WithMany(d => d.Users).HasForeignKey(ut => ut.UserTypeId);
+            //builder.HasOne(ut => ut.Designation).WithMany(d => d.Users).HasForeignKey(ut => ut.DesignationId);
 
             builder.HasOne(uc => uc.UserCredential).WithOne().HasForeignKey<UserCredentialEntity>(uc => uc.UserId);
 

@@ -9,10 +9,10 @@ namespace SLM.User.Domain.Interfaces
 {
     public interface IUserMenuEntityRepository
     {
-        Task<UserMenusEntity> GetAllocatedMenusForUserAsync(Guid userid);
+        Task<UserMenusEntity> GetAllocatedMenusForUser(Guid userid);
         //Task<List<UserEntity>> GetUserBasicDetailsAsync();
-        Task AddAllocatedMenusForUserAsync(UserMenusEntity user);
-        Task UpdateAllocatedMenusForUserAsync(UserMenusEntity user);
-        Task DeleteAllocatedMenusForUserAsync(UserMenusEntity user);
+        Task AddAllocatedMenusForUserAsync(UserMenusEntity usermenu);
+        Task UpdateAllocatedMenusForUserAsync(UserMenusEntity usermenu);
+        Task DeleteAllocatedMenusForUserAsync(Guid userid);
     }
 }

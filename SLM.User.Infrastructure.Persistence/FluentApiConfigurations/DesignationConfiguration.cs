@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SLM.User.Infrastructure.Persistence.FluentApiConfigurations
 {
-    public class DesignationConfiguration : IEntityTypeConfiguration<DesignationEntity>
+    public class DesignationConfiguration : BaseEntityConfiguration<DesignationEntity>
     {
         public void Configure(EntityTypeBuilder<DesignationEntity> builder)
         {
