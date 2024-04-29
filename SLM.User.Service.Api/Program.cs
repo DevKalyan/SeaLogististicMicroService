@@ -12,6 +12,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Configure CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:4200") // Update this with your Angular app's URL
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -54,15 +66,19 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "User Managment Api's Version 1");
-        //c.SwaggerEndpoint("/swagger/v2/swagger.json", "API V2");
-    });
+    
 }
-
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "User Managment Api's Version 1");
+    //c.SwaggerEndpoint("/swagger/v2/swagger.json", "API V2");
+});
 app.UseHttpsRedirection();
+
+app.UseRouting();
+// Use CORS
+app.UseCors("AllowOrigin");
 
 app.UseAuthorization();
 
