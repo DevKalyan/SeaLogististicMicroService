@@ -33,6 +33,12 @@ namespace SLM.User.Infrastructure.Persistence.Repositories
             }
         }
 
+        public async Task<IEnumerable<MenuItemsEntity>> GetAllMenuItems()
+        {
+            var result = await _localuserManagmentContext.MenuItems.ToListAsync();
+            return result.AsEnumerable();
+        }
+
         public async Task UpdateExistingMenuItemAsync(MenuItemsEntity MenuItems)
         {
             _localuserManagmentContext.MenuItems.Update(MenuItems);

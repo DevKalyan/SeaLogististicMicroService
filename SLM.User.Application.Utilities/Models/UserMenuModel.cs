@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace SLM.User.Application.Utilities.Models
 {
     public class UserMenuModel : BaseModel
-    {
-       
+    {       
         public string AssingedMenuCodes { get; set; }
     }
 }

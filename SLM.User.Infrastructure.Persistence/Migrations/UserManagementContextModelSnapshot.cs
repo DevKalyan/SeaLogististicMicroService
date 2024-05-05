@@ -62,13 +62,13 @@ namespace SLM.User.Infrastructure.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            EntityID = new Guid("7349edfd-1251-4b0f-b99a-56fc5333e5cf"),
-                            CreatedAt = new DateTime(2024, 4, 21, 23, 5, 26, 125, DateTimeKind.Utc).AddTicks(1507),
+                            EntityID = new Guid("3699a0ac-dfe6-4b87-be15-755071a73e47"),
+                            CreatedAt = new DateTime(2024, 5, 1, 22, 25, 6, 651, DateTimeKind.Utc).AddTicks(7487),
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000000"),
                             Description = "This is a super admin designation and will be only one user",
                             IsDeleted = 0,
                             Title = "Super-Admin",
-                            UpdatedAt = new DateTime(2024, 4, 21, 23, 5, 26, 125, DateTimeKind.Utc).AddTicks(1508),
+                            UpdatedAt = new DateTime(2024, 5, 1, 22, 25, 6, 651, DateTimeKind.Utc).AddTicks(7488),
                             UpdatedBy = new Guid("00000000-0000-0000-0000-000000000000")
                         });
                 });
@@ -221,16 +221,16 @@ namespace SLM.User.Infrastructure.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            EntityID = new Guid("97a50f44-a519-4188-a231-8a3e094edc4b"),
-                            CreatedAt = new DateTime(2024, 4, 21, 23, 5, 26, 140, DateTimeKind.Utc).AddTicks(1149),
+                            EntityID = new Guid("98930285-562e-4b85-831f-2e13ed35e538"),
+                            CreatedAt = new DateTime(2024, 5, 1, 22, 25, 6, 662, DateTimeKind.Utc).AddTicks(9452),
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000000"),
-                            DtPasswordChanged = new DateTime(2024, 4, 21, 23, 5, 26, 140, DateTimeKind.Utc).AddTicks(1144),
-                            HashedPassword = "/s2QonTnu4iTJAxnYopEqS2ja5D+VRCwO+/uZ+11K19ZWXVhGZJiF5EZQiAs1XqX",
+                            DtPasswordChanged = new DateTime(2024, 5, 1, 22, 25, 6, 662, DateTimeKind.Utc).AddTicks(9446),
+                            HashedPassword = "FV3g7xkaAjwhwitfpeyaBXKxSuvUXo/GKfS7bv/V9Wei/jQuKLAC92vhhcanfrQK",
                             IsDeleted = 0,
                             PasswordChanged = 1,
-                            UpdatedAt = new DateTime(2024, 4, 21, 23, 5, 26, 140, DateTimeKind.Utc).AddTicks(1153),
+                            UpdatedAt = new DateTime(2024, 5, 1, 22, 25, 6, 662, DateTimeKind.Utc).AddTicks(9455),
                             UpdatedBy = new Guid("00000000-0000-0000-0000-000000000000"),
-                            UserId = new Guid("adcb634d-ef78-41ad-b34f-9910061b222c"),
+                            UserId = new Guid("29cabc94-036d-4527-b6b5-61112f987d29"),
                             Username = "Adminstrator"
                         });
                 });
@@ -306,12 +306,12 @@ namespace SLM.User.Infrastructure.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            EntityID = new Guid("adcb634d-ef78-41ad-b34f-9910061b222c"),
+                            EntityID = new Guid("29cabc94-036d-4527-b6b5-61112f987d29"),
                             Country = "India",
-                            CreatedAt = new DateTime(2024, 4, 21, 23, 5, 26, 125, DateTimeKind.Utc).AddTicks(1557),
+                            CreatedAt = new DateTime(2024, 5, 1, 22, 25, 6, 651, DateTimeKind.Utc).AddTicks(7511),
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000000"),
-                            DateOfBirth = new DateTime(2024, 4, 21, 23, 5, 26, 125, DateTimeKind.Utc).AddTicks(1553),
-                            DesignationId = new Guid("7349edfd-1251-4b0f-b99a-56fc5333e5cf"),
+                            DateOfBirth = new DateTime(2024, 5, 1, 22, 25, 6, 651, DateTimeKind.Utc).AddTicks(7508),
+                            DesignationId = new Guid("3699a0ac-dfe6-4b87-be15-755071a73e47"),
                             Email = "Devkranth@gmail.com",
                             Firstname = "Super",
                             IsDeleted = 0,
@@ -320,9 +320,9 @@ namespace SLM.User.Infrastructure.Persistence.Migrations
                             PhoneNumber = "9999999999",
                             PostalCode = "999999",
                             State = "Karnataka",
-                            UpdatedAt = new DateTime(2024, 4, 21, 23, 5, 26, 125, DateTimeKind.Utc).AddTicks(1558),
+                            UpdatedAt = new DateTime(2024, 5, 1, 22, 25, 6, 651, DateTimeKind.Utc).AddTicks(7511),
                             UpdatedBy = new Guid("00000000-0000-0000-0000-000000000000"),
-                            UserTypeId = new Guid("3f99dbbf-8102-41f0-9ae2-2643aeb0f2cb")
+                            UserTypeId = new Guid("df554227-c4e6-4265-a762-96b30cc01654")
                         });
                 });
 
@@ -407,13 +407,13 @@ namespace SLM.User.Infrastructure.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            EntityID = new Guid("3f99dbbf-8102-41f0-9ae2-2643aeb0f2cb"),
-                            CreatedAt = new DateTime(2024, 4, 21, 23, 5, 26, 125, DateTimeKind.Utc).AddTicks(1192),
+                            EntityID = new Guid("df554227-c4e6-4265-a762-96b30cc01654"),
+                            CreatedAt = new DateTime(2024, 5, 1, 22, 25, 6, 651, DateTimeKind.Utc).AddTicks(7304),
                             CreatedBy = new Guid("00000000-0000-0000-0000-000000000000"),
                             Description = "This user will be having access to all and will also create the users",
                             IsDeleted = 0,
                             TypeName = "Adminstrator",
-                            UpdatedAt = new DateTime(2024, 4, 21, 23, 5, 26, 125, DateTimeKind.Utc).AddTicks(1200),
+                            UpdatedAt = new DateTime(2024, 5, 1, 22, 25, 6, 651, DateTimeKind.Utc).AddTicks(7309),
                             UpdatedBy = new Guid("00000000-0000-0000-0000-000000000000")
                         });
                 });
