@@ -9,6 +9,7 @@ namespace SLM.User.Domain.Interfaces
 {
     public interface IMenuEntityRepository
     {   
+        Task<IEnumerable<MenuEntity>> GetAllMenuHeaders();
         Task AddNewMenuAsync(MenuEntity menu);
         Task UpdateExistingMenuAsync(MenuEntity menu);
         Task DeleteMenuByMenuIdAsync(string menucode);

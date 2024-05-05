@@ -1,4 +1,6 @@
 ﻿using Bogus;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using SLM.User.Application.Utilities.Mappers;
 using SLM.User.Application.Utilities.Models;
 using SLM.User.Application.Utilities.ViewModel;
 using SLM.User.Domain.Entities.Models;
@@ -15,7 +17,7 @@ namespace SLM.User.Testing
         public static List<UserEntity> GenerateSampleUsers(int count = 25)
         {
             var faker = new Faker<UserEntity>()
-                .RuleFor(u=>u.EntityID,f=>f.Random.Guid())
+                .RuleFor(u => u.EntityID, f => f.Random.Guid())
                 .RuleFor(u => u.Firstname, f => f.Name.FirstName())
                 .RuleFor(u => u.MiddleName, f => f.Name.FirstName())
                 .RuleFor(u => u.Lastname, f => f.Name.LastName())
@@ -44,7 +46,7 @@ namespace SLM.User.Testing
             return userCredentials;
         }
 
-        public  static UserViewModel GenerateTestUserData()
+        public static UserViewModel GenerateTestUserData()
         {
             var _userId = Guid.NewGuid();
             var userBasicDetails = new UserBasicDetailsModel
@@ -71,10 +73,63 @@ namespace SLM.User.Testing
             {
                 UserId = _userId,
                 UserBasicDetails = userBasicDetails,
-                UserCredentials= userCredentials
+                UserCredentials = userCredentials
             };
 
             return user;
+        }
+
+        public static List<MenuEntity> GenerateSampleMenuHeaders(int count = 25)
+        {
+            var faker = new Faker<MenuEntity>()
+                .RuleFor(u => u.EntityID, f => f.Random.Guid())
+                .RuleFor(u => u.MenuCode, f => f.Random.Word())
+                .RuleFor(u => u.MenuHeader, f => f.Random.Word())
+                .RuleFor(u => u.MenuOrder, f => f.Random.Int());
+            var menus = faker.Generate(count);
+            return menus;
+        }
+
+        public static List<MenuItemsEntity> GenerateSampleMenuItems(int count = 25)
+        {
+            var faker = new Faker<MenuItemsEntity>()
+                .RuleFor(u => u.EntityID, f => f.Random.Guid())
+                .RuleFor(u => u.ParentMenuCode, f => f.Random.Word())
+                .RuleFor(u => u.MenuDescription, f => f.Random.Word())
+                .RuleFor(u => u.MenuItemCode, f => f.Random.Word())
+                .RuleFor(u => u.MenuName, f => f.Random.Word())
+                .RuleFor(u => u.MenuUrl, f => f.Random.Words())
+                .RuleFor(u => u.MenuOrder, f => f.Random.Int());
+            var menuItems = faker.Generate(count);
+            return menuItems;
+        }
+
+        public static List<MenuViewModel> GenerateMenuFakeData(int count = 25)
+        {
+            var _randomizer = new Randomizer();
+            var _menuHeaderFaker = new Faker<MenuEntity>()
+                .RuleFor(m => m.MenuCode, f => f.Random.Guid().ToString())
+                .RuleFor(m => m.MenuHeader, f => f.Commerce.Department())
+                .RuleFor(m => m.MenuOrder, f => f.Random.Int(1, 100));
+
+            // Generate fake menu headers
+            var menuHeaders = _menuHeaderFaker.Generate(count);
+
+            var _menuItemFaker = new Faker<MenuItemsEntity>()
+                .RuleFor(m => m.ParentMenuCode, f => f.PickRandom(menuHeaders.Select(h => h.MenuCode))) // Pick a random MenuCode as ParentMenuCode
+                .RuleFor(m => m.MenuItemCode, f => f.Random.Guid().ToString())
+                .RuleFor(m => m.MenuName, f => f.Commerce.ProductName())
+                .RuleFor(m => m.MenuDescription, f => f.Lorem.Sentence())
+                .RuleFor(m => m.MenuUrl, f => f.Internet.Url())
+                .RuleFor(m => m.MenuOrder, f => f.Random.Int(1, 100));
+
+            // Generate fake menu items
+            var menuItems = _menuItemFaker.Generate(count * 3); // Multiply count by 3 for more items than headers
+
+            // Construct MenuViewModels
+            var menuViewModels = MenuMapper.ConvertToMenuViewModel(menuHeaders, menuItems);
+
+            return menuViewModels;
         }
 
     }
