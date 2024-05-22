@@ -9,7 +9,7 @@ namespace SLM.User.Domain.Interfaces
 {
     public interface IUserTypeEntityRepository
     {
-        Task<UserTypeEntity> GetUserTypeForUserAsync(Guid userid);
+        Task<UserTypeEntity> GetUserTypeForUserTypeIdAsync(Guid userid);
         Task<List<UserTypeEntity>> GetAllUserTypesAsync();
         Task AddNewUserTypeAsync(UserTypeEntity user);
         Task UpdateExistingUsertypeAsync(UserTypeEntity user);

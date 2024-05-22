@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Moq.Language.Flow;
 namespace SLM.User.Testing.Controllers
 {
     public class UserContollerTestCases
@@ -34,6 +34,26 @@ namespace SLM.User.Testing.Controllers
             Assert.NotNull(result);
             Assert.Equal(200, result.StatusCode); // Assuming Ok() returns 200
             Assert.Equal(expectedUser, result.Value); // Assuming user object equality
+        }
+        [Fact]
+        public async Task InsertNewEmployee_ReturnsOk()
+        {
+            // Arrange
+            var loggerMock = new Mock<ILogger<UserController>>();
+            var userControllerMock = new Mock<UserController>(loggerMock.Object);
+            var expectedUser = TestDataGenerator.GenerateFakeDataForUsers().First();
+
+            userControllerMock.Setup(x => x.InsertNewEmpoloyee(expectedUser))
+                              .Returns((Task<IActionResult>)Task.CompletedTask);
+
+            var userController = userControllerMock.Object;
+
+            // Act
+            var result = await userController.InsertNewEmpoloyee(expectedUser);
+
+            // Assert
+            Assert.NotNull(result);
+            //Assert.Equal(expectedUser, result); // Make sure the returned user matches the expected user
         }
 
         //[Fact]

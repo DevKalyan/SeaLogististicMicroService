@@ -21,7 +21,7 @@ namespace SLM.User.Infrastructure.Persistence.Repositories
         public async Task AddAllocatedMenusForUserAsync(UserMenusEntity usermenu)
         {
             await _localuserManagmentContext.UserMenus.AddAsync(usermenu);
-            _ = _localuserManagmentContext.SaveChangesAsync();
+            _ = _localuserManagmentContext.SaveChanges();
         }
 
         public async Task DeleteAllocatedMenusForUserAsync(Guid userid)
@@ -39,9 +39,11 @@ namespace SLM.User.Infrastructure.Persistence.Repositories
             await _localuserManagmentContext.SaveChangesAsync(); ;
         }
 
-        Task<UserMenusEntity> IUserMenuEntityRepository.GetAllocatedMenusForUser(Guid userid)
+        public async Task<UserMenusEntity> GetAllocatedMenusForUser(Guid userid)
         {
-            throw new NotImplementedException();
+           return await  _localuserManagmentContext.UserMenus.Where(u=>userid == u.UserId).FirstOrDefaultAsync();            
         }
+
+       
     }
 }

@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace SLM.User.Application.Utilities.ViewModel
 {
-    public class UserViewModel
+    public class UserViewModel : BaseViewModel
     {
         public Guid UserId { get; set; }
         public UserBasicDetailsModel UserBasicDetails { get; set; }
         public UserCredentialsModel UserCredentials { get; set; }
+
         public UserMenuModel UserMenuDetails { get; set; }
     }
 }

@@ -10,7 +10,6 @@ namespace SLM.User.Domain.Entities.Models
     {
         public Guid UserId { get; set; }
         public string AllocatedMenus { get; set; }
-
         //RelationShip
 
         public UserEntity User { get; set; }

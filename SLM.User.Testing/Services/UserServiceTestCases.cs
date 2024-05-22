@@ -18,7 +18,7 @@ namespace SLM.User.Testing.Services
             // Arrange
             var userServiceMock = new Mock<IUserService>();
 
-            var expectedUser =  TestDataGenerator.GenerateTestUserData();
+            var expectedUser = TestDataGenerator.GenerateTestUserData();
             var username = "valid_username";
             var password = "valid_password";
 
@@ -57,27 +57,46 @@ namespace SLM.User.Testing.Services
         //    // Add more assertions based on expectedUser properties if needed
         //}
 
-        //[Fact]
-        //public async Task GetAllUserDetails_ReturnsListOfUserViewModels()
-        //{
-        //    // Arrange
-        //    var userServiceMock = new Mock<IUserService>();
-        //    var expectedUsers = new List<UserViewModel>
-        //    {
-        //        /* Fill with expected user view models */
-        //    };
-        //    userServiceMock.Setup(x => x.GetAllUserDetails())
-        //                   .ReturnsAsync(expectedUsers);
+        [Fact]
+        public async Task GetAllUserDetails_ReturnsListOfListOfUserViewModels()
+        {
+            // Arrange
+            var userServiceMock = new Mock<IUserService>();
+            var expectedUsers = TestDataGenerator.GenerateFakeDataForUsers(); // Assuming you have a method to generate test user data
 
-        //    var userService = userServiceMock.Object;
+            var allUserViewModels = new List<List<UserViewModel>>(); // Create a new list to hold the list of UserViewModels
+            allUserViewModels.Add(new List<UserViewModel>((IEnumerable<UserViewModel>)expectedUsers)); // Add a copy of the expectedUsers list to the list of lists
 
-        //    // Act
-        //    var result = await userService.GetAllUserDetails();
+            userServiceMock.Setup(x => x.GetAllUserDetails())
+                           .ReturnsAsync(allUserViewModels); // Return the list of lists from the mock
 
-        //    // Assert
-        //    Assert.NotNull(result);
-        //    Assert.NotEmpty(result);
-        //    // Add more assertions based on expectedUsers properties if needed
-        //}
+            var userService = userServiceMock.Object;
+
+            // Act
+            var result = await userService.GetAllUserDetails();
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+            // Add more assertions based on expectedUsers properties if needed
+        }
+
+        [Fact]
+        public async Task InsertNewUserDetails_InsertsUserIntoRepository()
+        {
+            // Arrange
+            var userServiceMock = new Mock<IUserService>();
+            var expectedUser = TestDataGenerator.GenerateFakeDataForUsers().First();
+
+            userServiceMock.Setup(x => x.InsertNewUserDetails(expectedUser))
+                           .Returns(Task.CompletedTask); // Assuming InsertNewUserDetails returns a Task without any specific value
+
+            var userService = userServiceMock.Object;
+
+            // Act
+            await userService.InsertNewUserDetails(expectedUser);
+
+            // No need for an assertion because the test is checking if the method call completes without error
+        }
     }
 }

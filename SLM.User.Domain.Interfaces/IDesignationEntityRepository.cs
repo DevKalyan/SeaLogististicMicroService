@@ -9,7 +9,7 @@ namespace SLM.User.Domain.Interfaces
 {
     public interface IDesignationEntityRepository
     {
-        Task<DesignationEntity> GetDesignationDetailsForUserAsync(Guid designationid);
+        Task<DesignationEntity> GetDesignationDetailsForDesignationIdAsync(Guid designationid);
         Task<List<DesignationEntity>> GetAllDesignationsAsync();
         Task AddNewDesignationAsync(DesignationEntity designation);
         Task UpdateExistingDesignationAsync(DesignationEntity designation);

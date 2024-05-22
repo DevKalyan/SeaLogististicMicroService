@@ -54,10 +54,14 @@ builder.Services.AddTransient<IDesignationEntityRepository, DesignationEntityRep
 builder.Services.AddTransient<IUserTypeEntityRepository, UserTypeEntityRepository>();
 builder.Services.AddTransient<IMenuEntityRepository, MenuEntityReposistory>();
 builder.Services.AddTransient<IMenuItemsEntityRepository, MenuItemEntityRepository>();
+builder.Services.AddTransient<IUserMenuEntityRepository, UserMenuEntityRepository>();
 
 
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IMenuService, MenuService>();
+builder.Services.AddTransient<ICommonService, CommonService>();
+builder.Services.AddTransient<IDesignationService, DesignationService>();
+builder.Services.AddTransient<IUserTypeService, UserTypeService>();
 
 builder.Services.AddDbContext<UserManagementContext>(options =>
 {

@@ -29,7 +29,8 @@ namespace SLM.User.Infrastructure.Persistence.Repositories
             var result = await _localuserManagmentContext.Designations.FirstOrDefaultAsync(e => e.EntityID == designationid);
             if (result != null)
             {
-                _localuserManagmentContext.Designations.Remove(result);
+                //_localuserManagmentContext.Designations.Remove(result);
+                result.IsDeleted = 1;
                 await _localuserManagmentContext.SaveChangesAsync();
             }
         }
@@ -40,7 +41,7 @@ namespace SLM.User.Infrastructure.Persistence.Repositories
             return result;
         }
 
-        public async Task<DesignationEntity> GetDesignationDetailsForUserAsync(Guid designationid)
+        public async Task<DesignationEntity> GetDesignationDetailsForDesignationIdAsync(Guid designationid)
         {
             var _userBasicDetails = await _localuserManagmentContext.Designations.Where(u => u.EntityID == designationid).FirstOrDefaultAsync();
             return _userBasicDetails;

@@ -21,7 +21,7 @@ namespace SLM.User.Infrastructure.Persistence.Repositories
         public async Task AddUserBasicDetailsAsync(UserEntity user)
         {
             await _localuserManagmentContext.Users.AddAsync(user);
-            _ = _localuserManagmentContext.SaveChangesAsync();
+            _ = _localuserManagmentContext.SaveChanges();
         }
 
         public async Task DeleteUserBasicDetailsAsync(UserEntity user)

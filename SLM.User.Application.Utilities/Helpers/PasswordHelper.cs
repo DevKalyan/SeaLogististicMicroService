@@ -12,8 +12,7 @@ namespace SLM.User.Application.Utilities.Helpers
     {
         private const int SaltSize = 16; // 16 bytes salt size
         private const int KeySize = 32; // 32 bytes key size
-        private const int Iterations = 10000; // Number of iterations
-              
+        private const int Iterations = 10000; // Number of iterations             
 
         public static bool VerifyPassword(string password, string hashedPassword)
         {
@@ -42,6 +41,32 @@ namespace SLM.User.Application.Utilities.Helpers
             }
 
             return true;
+        }
+
+        public static string HashPassword(string password)
+        {
+            // Generate a random salt
+            byte[] salt = new byte[SaltSize];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(salt);
+            }
+
+            // Hash the password with the salt using PBKDF2
+            byte[] hash = KeyDerivation.Pbkdf2(
+                password: password,
+                salt: salt,
+                prf: KeyDerivationPrf.HMACSHA512,
+                iterationCount: Iterations,
+                numBytesRequested: KeySize);
+
+            // Combine the salt and hash into a single byte array
+            byte[] combinedBytes = new byte[SaltSize + KeySize];
+            Array.Copy(salt, 0, combinedBytes, 0, SaltSize);
+            Array.Copy(hash, 0, combinedBytes, SaltSize, KeySize);
+
+            // Convert the combined byte array to Base64 string
+            return Convert.ToBase64String(combinedBytes);
         }
     }
 

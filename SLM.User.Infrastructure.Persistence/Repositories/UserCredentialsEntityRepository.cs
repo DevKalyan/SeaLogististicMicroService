@@ -22,7 +22,7 @@ namespace SLM.User.Infrastructure.Persistence.Repositories
         public async Task AddUserCredentialDetailsAsync(UserCredentialEntity user)
         {
             await _localuserManagmentContext.UserCredentials.AddAsync(user);
-            _ = _localuserManagmentContext.SaveChangesAsync();
+            _ = _localuserManagmentContext.SaveChanges();
         }
 
         public async Task DeleteUserCredentialDetailsAsync(UserCredentialEntity user)

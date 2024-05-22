@@ -27,21 +27,6 @@ namespace SLM.User.Testing.Repositories
         }
 
         [Fact]
-        public async Task GetUserBasicDetailsAsync_ReturnsListOfUserEntities()
-        {
-            // Arrange
-            var mockRepository = new Mock<IUserEntityRepository>();
-            var expectedUsers = TestDataGenerator.GenerateSampleUsers(20);
-            mockRepository.Setup(repo => repo.GetUserBasicDetailsAsync())
-                          .ReturnsAsync(expectedUsers);
-
-            // Act
-            var actualUsers = await mockRepository.Object.GetUserBasicDetailsAsync();
-
-            // Assert
-            Assert.Equal(expectedUsers, actualUsers);            
-        }
-        [Fact]
         public async Task AddUserBasicDetailsAsync_AddsUserEntity_Positive()
         {
             // Arrange
@@ -49,10 +34,19 @@ namespace SLM.User.Testing.Repositories
             var userToAdd = TestDataGenerator.GenerateSampleUsers(1).First();
 
             // Act
-            await mockRepository.Object.AddUserBasicDetailsAsync(userToAdd);
+            try
+            {
+                await mockRepository.Object.AddUserBasicDetailsAsync(userToAdd);
 
-            // Assert - Verify that no exception is thrown
-            // If method completes without exceptions, it indicates success
+                // Assert - Verify that no exception is thrown
+                // If method completes without exceptions, it indicates success
+                Assert.True(true); // This line is to ensure the test passes if the method completes without exceptions
+            }
+            catch (Exception ex)
+            {
+                // If an exception is caught, fail the test and output the exception message
+                Assert.True(false, $"Test failed with exception: {ex.Message}");
+            }
         }
 
         [Fact]

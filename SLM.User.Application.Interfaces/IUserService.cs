@@ -12,6 +12,7 @@ namespace SLM.User.Application.Interfaces
     {
         Task<UserViewModel> ValidateUser(string username, string password);
         Task<UserViewModel> GetUserDetailsByUserId(Guid userid);
-        Task<IEnumerable<UserViewModel>> GetAllUserDetails();
+        Task<IEnumerable<List<UserViewModel>>> GetAllUserDetails();
+        Task InsertNewUserDetails(UserViewModel newUserDetails);
     }
 }

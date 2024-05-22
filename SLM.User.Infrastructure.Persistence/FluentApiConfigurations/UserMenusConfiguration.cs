@@ -19,7 +19,7 @@ namespace SLM.User.Infrastructure.Persistence.FluentApiConfigurations
 
 
             builder.Property(u => u.UserId).HasColumnName("userId").HasColumnType("uniqueidentifier").IsRequired();
-            builder.Property(u => u.AllocatedMenus).HasColumnName("allocatedMenus").HasColumnType("varchar").HasMaxLength(100).IsRequired();
+            builder.Property(u => u.AllocatedMenus).HasColumnName("allocatedMenuCode").HasColumnType("varchar").HasMaxLength(100).IsRequired();
             
         }
     }

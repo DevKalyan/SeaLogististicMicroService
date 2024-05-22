@@ -12,4 +12,10 @@
     <ProjectReference Include="..\SLM.User.Domain.Interfaces\SLM.User.Domain.Interfaces.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Json\Countries.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

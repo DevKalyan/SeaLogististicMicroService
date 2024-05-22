@@ -40,7 +40,7 @@ namespace SLM.User.Infrastructure.Persistence.Repositories
             return _allUserBasicDetails;
         }
 
-        public Task<UserTypeEntity> GetUserTypeForUserAsync(Guid userid)
+        public Task<UserTypeEntity> GetUserTypeForUserTypeIdAsync(Guid userid)
         {
             throw new NotImplementedException();
         }

@@ -12,7 +12,7 @@ namespace SLM.User.Application.Utilities.Models
         public Guid UniqueID { get; set; }
         public DateTime CreatedDt { get; set; }
         public Guid CreateUserId { get; set; }
-        public DateTime? UpdatedDt { get; set; }
+        public DateTime? ModifiedDt { get; set; }
         public Guid ModifiedUserId { get; set; }
         public int IsDeleted { get; set; }
     }

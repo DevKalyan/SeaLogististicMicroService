@@ -132,5 +132,109 @@ namespace SLM.User.Testing
             return menuViewModels;
         }
 
+        public static List<UserMenusEntity> GenerateSampleUserMenuData(int count = 25)
+        {
+            var userMenulFaker = new Faker<UserMenusEntity>()
+            .RuleFor(c => c.UserId, f => f.Random.Guid())
+            .RuleFor(c => c.AllocatedMenus, f => f.Random.AlphaNumeric(3));
+
+            var userAllocatedMenus = userMenulFaker.Generate(count);
+
+            return userAllocatedMenus;
+        }
+
+        public static List<UserViewModel> GenerateFakeDataForUsers(int count = 25)
+        {
+            var _randomizer = new Randomizer();
+            var _userbasicDetailsFaker = new Faker<UserEntity>()
+                .RuleFor(u => u.EntityID, f => f.Random.Guid())
+                .RuleFor(u => u.Firstname, f => f.Name.FirstName())
+                .RuleFor(u => u.MiddleName, f => f.Name.FirstName())
+                .RuleFor(u => u.Lastname, f => f.Name.LastName())
+                .RuleFor(u => u.Email, (f, u) => f.Internet.Email(u.Firstname, u.Lastname))
+                .RuleFor(u => u.Country, f => f.Address.Country())
+                .RuleFor(u => u.State, f => f.Address.State())
+                .RuleFor(u => u.PostalCode, f => f.Address.ZipCode())
+                .RuleFor(u => u.PhoneNumber, f => f.Phone.PhoneNumber())
+                .RuleFor(u => u.DateOfBirth, f => f.Date.Past(30))
+                .RuleFor(u => u.UserTypeId, f => f.Random.Guid())
+                .RuleFor(u => u.DesignationId, f => f.Random.Guid());
+
+            // Generate fake user basic details
+            var userBasicDetails = _userbasicDetailsFaker.Generate(count);
+
+            var credentialFaker = new Faker<UserCredentialEntity>()
+                .RuleFor(c => c.Username, f => f.Internet.UserName())
+                .RuleFor(c => c.HashedPassword, f => f.Random.Hash())
+                .RuleFor(c => c.PasswordChanged, f => f.Random.Number(0, 10))
+                .RuleFor(c => c.DtPasswordChanged, f => f.Date.Recent())
+                .RuleFor(c => c.UserId, f => f.PickRandom(userBasicDetails.Select(h => h.EntityID)));
+
+            var userCredentials = credentialFaker.Generate(count);
+
+            var _menuHeaderFaker = new Faker<MenuEntity>()
+                .RuleFor(m => m.MenuCode, f => f.Random.Guid().ToString())
+                .RuleFor(m => m.MenuHeader, f => f.Commerce.Department())
+                .RuleFor(m => m.MenuOrder, f => f.Random.Int(1, 100));
+
+            // Generate fake menu headers
+            var menuHeaders = _menuHeaderFaker.Generate(count);
+
+            var _menuItemFaker = new Faker<MenuItemsEntity>()
+                .RuleFor(m => m.ParentMenuCode, f => f.PickRandom(menuHeaders.Select(h => h.MenuCode))) // Pick a random MenuCode as ParentMenuCode
+                .RuleFor(m => m.MenuItemCode, f => f.Random.Guid().ToString())
+                .RuleFor(m => m.MenuName, f => f.Commerce.ProductName())
+                .RuleFor(m => m.MenuDescription, f => f.Lorem.Sentence())
+                .RuleFor(m => m.MenuUrl, f => f.Internet.Url())
+                .RuleFor(m => m.MenuOrder, f => f.Random.Int(1, 100));
+
+            // Generate fake menu items
+            var menuItems = _menuItemFaker.Generate(count * 3); // Multiply count by 3 for more items than headers
+
+            var userMenuFaker = new Faker<UserMenusEntity>()
+                       .RuleFor(c => c.UserId, f => f.PickRandom(userBasicDetails.Select(h => h.EntityID)))
+                       .RuleFor(c => c.AllocatedMenus, f => f.PickRandom(menuItems.Select(u => u.MenuItemCode)));
+
+            var userAllocatedMenus = userMenuFaker.Generate(count);
+
+            var userViewModels = userBasicDetails.Select(user =>
+            {
+                var userCredential = userCredentials.FirstOrDefault(c => c.UserId == user.EntityID);
+                var userMenus = userAllocatedMenus.Where(m => m.UserId == user.EntityID)
+                                                  .Select(m => m.AllocatedMenus)
+                                                  .ToList();
+
+                return new UserViewModel
+                {
+                    UserId = user.EntityID,
+                    UserBasicDetails = new UserBasicDetailsModel
+                    {
+                        User_FirstName = user.Firstname,
+                        User_MiddleName = user.MiddleName,
+                        User_LastName = user.Lastname,
+                        User_Email = user.Email,
+                        User_Country = user.Country,
+                        User_State = user.State,
+                        User_PostalCode = user.PostalCode,
+                        User_PhoneNumber = user.PhoneNumber,
+                        User_DateOfBirth = user.DateOfBirth,
+                        User_Designation = user.DesignationId                       
+                    },
+                    UserCredentials = new UserCredentialsModel
+                    {
+                        Username = userCredential?.Username,
+                        PasswordHash = userCredential?.HashedPassword,
+                        PasswordChanged = userCredential?.PasswordChanged ?? 0,
+                        DtPasswordChanged = userCredential?.DtPasswordChanged ?? DateTime.MinValue
+                    },
+                    UserMenuDetails = new UserMenuModel()                    {
+                       
+                        AssingedMenuCodes = string.Join(",", userMenus)
+                    }
+                };
+            }).ToList();
+
+            return userViewModels;
+        }
     }
 }

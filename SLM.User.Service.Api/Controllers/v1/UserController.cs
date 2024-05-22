@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SLM.User.Application.Interfaces;
+using SLM.User.Application.Utilities.ViewModel;
 
 namespace SLM.User.Service.Api.Controllers.v1
 {
@@ -27,6 +28,20 @@ namespace SLM.User.Service.Api.Controllers.v1
                     return NotFound();
                 }
                 return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                return StatusCode(500, "An error occurred while processing the request.");
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult>InsertNewEmpoloyee(UserViewModel newUserDetails)
+        {
+            try
+            {
+                await _userService.InsertNewUserDetails(newUserDetails);                
+                return Ok();
             }
             catch (Exception ex)
             {

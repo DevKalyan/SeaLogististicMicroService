@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SLM.User.Application.Utilities.Models
 {
-    public class UserCredentialsModel : BaseModel
-    {
+    public class UserCredentialsModel 
+    {        
         public string Username { get; set; }
         public string PasswordHash { get; set; }
         public int PasswordChanged { get; set; }
