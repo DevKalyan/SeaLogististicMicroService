@@ -8,10 +8,10 @@ namespace SLM.User.Domain.Entities.Models
 {
     public class DesignationEntity : BaseEntity
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public string DesignationCode { get; set; }
+        public string DesignationName { get; set; }
+        public string DesignationDesc { get; set; }
 
-        //the configuration ensures that for each user, there is one job title, and each job title can have multiple users. 
-        public ICollection<UserEntity> Users { get; set; }
+        public List<UserEntity> Users { get; set; }
     }
 }

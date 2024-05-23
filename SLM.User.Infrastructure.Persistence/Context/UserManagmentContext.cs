@@ -1,12 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SLM.User.Domain.Entities.Models;
-using SLM.User.Infrastructure.Persistence.Extensions;
 using SLM.User.Infrastructure.Persistence.FluentApiConfigurations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SLM.User.Infrastructure.Persistence.Context
 {
@@ -26,6 +20,8 @@ namespace SLM.User.Infrastructure.Persistence.Context
         public DbSet<MenuEntity> Menus { get; set; }
         public DbSet<MenuItemsEntity> MenuItems { get; set; }
 
+        public DbSet<EmailTemplatesEntity> EmailTemplates { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -37,10 +33,11 @@ namespace SLM.User.Infrastructure.Persistence.Context
             modelBuilder.ApplyConfiguration(new DesignationConfiguration());
             modelBuilder.ApplyConfiguration(new MenuConfiguration());
             modelBuilder.ApplyConfiguration(new MenuItemConfiguration());
+            modelBuilder.ApplyConfiguration(new EmailTemplateConfiguration());
 
             // Apply BaseEntityConfiguration last This is because the ApplyConfiguration method applies the configuration to the ModelBuilder in the order it's called and avoid overidden
             //modelBuilder.ApplyConfiguration(new BaseEntityConfiguration());
-            modelBuilder.Seed();
+            //modelBuilder.Seed();
         }
     }
 }

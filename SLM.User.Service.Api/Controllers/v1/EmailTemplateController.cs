@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using SLM.User.Application.Interfaces;
 using SLM.User.Application.Utilities.ViewModel;
 
@@ -6,22 +7,22 @@ namespace SLM.User.Service.Api.Controllers.v1
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class DesignationController : ControllerBase
+    public class EmailTemplateController : ControllerBase
     {
-        private readonly ILogger<DesignationController> _logger;
-        private readonly IDesignationService _designationService;
-        public DesignationController(ILogger<DesignationController> logger, IDesignationService designationService)
+        private readonly ILogger<EmailTemplateController> _logger;
+        private readonly IEmailTempateService _emailTemplateService;
+        public EmailTemplateController(ILogger<EmailTemplateController> logger, IEmailTempateService emailTemplateService)
         {
             _logger = logger;
-            _designationService = designationService;
+            _emailTemplateService = emailTemplateService;
         }
         [HttpGet]
-        [Route("LoadAllDesignations")]
+        [Route("LoadAllEmailTemplates")]
         public async Task<IActionResult> GetAllDesignations()
         {
             try
             {
-                var designtionList = await _designationService.GetDesignationsAsync();
+                var designtionList = await _emailTemplateService.GetAllEmailTemplateAsync();
                 if (designtionList == null)
                 {
                     return NotFound();
@@ -35,12 +36,12 @@ namespace SLM.User.Service.Api.Controllers.v1
             }
         }
         [HttpPost]
-        [Route("InsertNewDesignationDetails")]
-        public async Task<IActionResult> NewDesigation(DesignationViewModel designation)
+        [Route("InsertNewEmailTemplate")]
+        public async Task<IActionResult> NewEmailTemplate(EmailTemplateViewModel emailTemplate)
         {
             try
             {
-                await _designationService.InsertNewDesignation(designation);                
+                await _emailTemplateService.InsertEmailTemplate(emailTemplate);
                 return Ok();
             }
             catch (Exception ex)
@@ -50,12 +51,12 @@ namespace SLM.User.Service.Api.Controllers.v1
             }
         }
         [HttpPut]
-        [Route("UpdateExistingDesignationDetils")]
-        public async Task<IActionResult> UpdateDesignationDetils(DesignationViewModel designation)
+        [Route("UpdateExistingEmailTemplate")]
+        public async Task<IActionResult> UpdateDesignationDetils(EmailTemplateViewModel emailTemplate)
         {
             try
             {
-                await _designationService.UpdateExistingDesignation(designation);
+                await _emailTemplateService.UpdateExistingEmailTemplate(emailTemplate);
                 return Ok();
             }
             catch (Exception ex)
@@ -65,12 +66,12 @@ namespace SLM.User.Service.Api.Controllers.v1
             }
         }
         [HttpDelete]
-        [Route("DeleteExistingDesignationDetils")]
-        public async Task<IActionResult> DeleteDesignationDetils(Guid designationId)
+        [Route("DeleteExistingEmailTemplate")]
+        public async Task<IActionResult> DeleteDesignationDetils(Guid emailTemplateId)
         {
             try
             {
-                await _designationService.DeleteExistingDesignation(designationId);
+                await _emailTemplateService.DeleteExistingEmailTemplate(emailTemplateId);
                 return Ok();
             }
             catch (Exception ex)
@@ -79,6 +80,5 @@ namespace SLM.User.Service.Api.Controllers.v1
                 return StatusCode(500, "An error occurred while processing the request.");
             }
         }
-
     }
 }

@@ -14,8 +14,10 @@ namespace SLM.User.Application.Utilities.Mappers
             {
                 DesignationViewModel designationViewModel = new DesignationViewModel();
 
-                designationViewModel.Title = item.Title;
-                designationViewModel.Description = item.Description;
+
+                designationViewModel.DesignationCode = item.DesignationCode;
+                designationViewModel.DesignationName = item.DesignationName;
+                designationViewModel.DesignationDetails = item.DesignationDesc;
                 designationViewModel.PrimaryId = item.EntityID;
                 designationViewModel.CreatedAt = item.CreatedAt;
                 designationViewModel.CreatedBy = item.CreatedBy;
@@ -30,31 +32,32 @@ namespace SLM.User.Application.Utilities.Mappers
         {
             DesignationViewModel designationViewModel = new()
             {
-                Title = designationentity.Title,
-                Description = designationentity.Description,
+                DesignationCode = designationentity.DesignationCode,
+                DesignationName = designationentity.DesignationName,
+                DesignationDetails = designationentity.DesignationDesc,
                 PrimaryId = designationentity.EntityID,
                 CreatedAt = designationentity.CreatedAt,
                 UpdatedAt = designationentity.UpdatedAt,
                 UpdatedBy = designationentity.UpdatedBy,
-                 CreatedBy = designationentity.CreatedBy
+                CreatedBy = designationentity.CreatedBy
             };
 
             return designationViewModel;
         }
-        public static DesignationEntity ConvertDesignationViewModelToDesignationEntity(DesignationViewModel designationentity)
+        public static DesignationEntity ConvertDesignationViewModelToDesignationEntity(DesignationViewModel designationViewModel)
         {
-            DesignationEntity designationViewModel = new()
+            DesignationEntity designationentity = new()
             {
-                Title = designationentity.Title,
-                Description = designationentity.Description,
-                EntityID = designationentity.PrimaryId,
-                CreatedAt = designationentity.CreatedAt,
-                UpdatedAt = designationentity.UpdatedAt,
-                UpdatedBy = designationentity.UpdatedBy,
-               CreatedBy= designationentity.CreatedBy            
+                DesignationCode = designationViewModel.DesignationCode,
+                DesignationName = designationViewModel.DesignationName,
+                DesignationDesc = designationViewModel.DesignationDetails,
+                EntityID = designationViewModel.PrimaryId,
+                CreatedAt = designationViewModel.CreatedAt,
+                UpdatedAt = designationViewModel.UpdatedAt,
+                UpdatedBy = designationViewModel.UpdatedBy,
+                CreatedBy = designationViewModel.CreatedBy
             };
-
-            return designationViewModel;
+            return designationentity;
         }
     }
 }

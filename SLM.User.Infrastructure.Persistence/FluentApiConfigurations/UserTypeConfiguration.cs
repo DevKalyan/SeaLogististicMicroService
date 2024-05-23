@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace SLM.User.Infrastructure.Persistence.FluentApiConfigurations
 {
-    public class UserTypeConfiguration : BaseEntityConfiguration<UserTypeEntity>
+    public class UserTypeConfiguration : IEntityTypeConfiguration<UserTypeEntity>
     {
         public void Configure(EntityTypeBuilder<UserTypeEntity> builder)
         {
-            builder.ToTable("dbo.TblUserType");
+            builder.ToTable("SLM_Master_TblUserType");
             builder.HasKey(u => u.EntityID);
             builder.Property(u => u.EntityID).HasColumnName("userTypeId").HasColumnType("uniqueidentifier").IsRequired();
 

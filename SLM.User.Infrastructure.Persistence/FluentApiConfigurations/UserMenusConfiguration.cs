@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace SLM.User.Infrastructure.Persistence.FluentApiConfigurations
 {
-    public class UserMenusConfiguration : BaseEntityConfiguration<UserMenusEntity>
+    public class UserMenusConfiguration : IEntityTypeConfiguration<UserMenusEntity>
     {
         public void Configure(EntityTypeBuilder<UserMenusEntity> builder)
         {
-            builder.ToTable("dbo.TblUserMenuDetail");
+            builder.ToTable("SLM_Master_TblUserMenuDetail");
             builder.HasKey(u => u.EntityID);
             builder.Property(u => u.EntityID).HasColumnName("userMenuId").HasColumnType("uniqueidentifier").IsRequired();
 

@@ -12,80 +12,80 @@ namespace SLM.User.Infrastructure.Persistence.Extensions
 {
     public static class InitialDataSeeder
     {
-        public static void Seed(this ModelBuilder modelBuilder)
-        {
-            // User Type 
-            var userId= Guid.NewGuid();
-            var designationId= Guid.NewGuid();
-            var userTypeId= Guid.NewGuid();
+        //public static void seed(this modelbuilder modelbuilder)
+        //{
+        //    // user type 
+        //    var userid = Guid.NewGuid();
+        //    var designationid = Guid.newguid();
+        //    var usertypeid = Guid.newguid();
 
-            modelBuilder.Entity<UserTypeEntity>().HasData(
-                new UserTypeEntity
-                {
-                    EntityID = userTypeId,
-                    TypeName = "Adminstrator",
-                    Description = "This user will be having access to all and will also create the users",
-                    CreatedAt = DateTime.UtcNow,
-                    CreatedBy = Guid.Empty,
-                    UpdatedAt = DateTime.UtcNow,
-                    UpdatedBy = Guid.Empty,
-                    IsDeleted = 0
-                });
+        //    modelbuilder.entity<usertypeentity>().hasdata(
+        //        new usertypeentity
+        //        {
+        //            entityid = usertypeid,
+        //            typename = "adminstrator",
+        //            description = "this user will be having access to all and will also create the users",
+        //            createdat = datetime.utcnow,
+        //            createdby = guid.empty,
+        //            updatedat = datetime.utcnow,
+        //            updatedby = guid.empty,
+        //            isdeleted = 0
+        //        });
 
-            modelBuilder.Entity<DesignationEntity>().HasData(
-                new DesignationEntity
-                {
-                    EntityID = designationId,
-                    Title = "Super-Admin",
-                    Description = "This is a super admin designation and will be only one user",
-                    CreatedAt = DateTime.UtcNow,
-                    CreatedBy = Guid.Empty,
-                    UpdatedAt = DateTime.UtcNow,
-                    UpdatedBy = Guid.Empty,
-                    IsDeleted = 0
-                });
+        //    modelbuilder.entity<emailtemplatesentity>().hasdata(
+        //        new emailtemplatesentity
+        //        {
+        //            entityid = designationid,
+        //            title = "super-admin",
+        //            description = "this is a super admin designation and will be only one user",
+        //            createdat = datetime.utcnow,
+        //            createdby = guid.empty,
+        //            updatedat = datetime.utcnow,
+        //            updatedby = guid.empty,
+        //            isdeleted = 0
+        //        });
 
 
 
-            modelBuilder.Entity<UserEntity>().HasData(
-                new UserEntity
-                {
-                    EntityID= userId,
-                    Firstname = "Super",
-                    MiddleName ="SA",
-                    Lastname= "Administrator",
-                    DateOfBirth = DateTime.UtcNow,
-                    DesignationId= designationId,
-                    UserTypeId= userTypeId,
-                    Country= "India",      
-                    State= "Karnataka",
-                    Email ="Devkranth@gmail.com",
-                    PhoneNumber ="9999999999",
-                    PostalCode ="999999",                    
-                    CreatedAt = DateTime.UtcNow,
-                    CreatedBy = Guid.Empty,
-                    UpdatedAt = DateTime.UtcNow,
-                    UpdatedBy = Guid.Empty,
-                    IsDeleted = 0
-                }
-            );
-            modelBuilder.Entity<UserCredentialEntity>().HasData(
-               new UserCredentialEntity
-               {
-                   EntityID = Guid.NewGuid(),
-                   UserId = userId,
-                   Username ="Adminstrator",
-                   HashedPassword= PasswordHasher.HashPassword("Adminstrator"),
-                   DtPasswordChanged= DateTime.UtcNow,
-                   PasswordChanged= 1,
-                   CreatedAt = DateTime.UtcNow,
-                   CreatedBy = Guid.Empty,
-                   UpdatedAt = DateTime.UtcNow,
-                   UpdatedBy = Guid.Empty,
-                   IsDeleted = 0
-               }
-           );
-        }
+        //    modelbuilder.entity<userentity>().hasdata(
+        //        new userentity
+        //        {
+        //            entityid = userid,
+        //            firstname = "super",
+        //            middlename = "sa",
+        //            lastname = "administrator",
+        //            dateofbirth = datetime.utcnow,
+        //            designationid = designationid,
+        //            usertypeid = usertypeid,
+        //            country = "india",
+        //            state = "karnataka",
+        //            email = "devkranth@gmail.com",
+        //            phonenumber = "9999999999",
+        //            postalcode = "999999",
+        //            createdat = datetime.utcnow,
+        //            createdby = guid.empty,
+        //            updatedat = datetime.utcnow,
+        //            updatedby = guid.empty,
+        //            isdeleted = 0
+        //        }
+        //    );
+        //    modelbuilder.entity<usercredentialentity>().hasdata(
+        //       new usercredentialentity
+        //       {
+        //           entityid = guid.newguid(),
+        //           userid = userid,
+        //           username = "adminstrator",
+        //           hashedpassword = passwordhasher.hashpassword("adminstrator"),
+        //           dtpasswordchanged = datetime.utcnow,
+        //           passwordchanged = 1,
+        //           createdat = datetime.utcnow,
+        //           createdby = guid.empty,
+        //           updatedat = datetime.utcnow,
+        //           updatedby = guid.empty,
+        //           isdeleted = 0
+        //       }
+        //   );
+        //}
 
     }
 }

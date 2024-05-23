@@ -55,13 +55,14 @@ builder.Services.AddTransient<IUserTypeEntityRepository, UserTypeEntityRepositor
 builder.Services.AddTransient<IMenuEntityRepository, MenuEntityReposistory>();
 builder.Services.AddTransient<IMenuItemsEntityRepository, MenuItemEntityRepository>();
 builder.Services.AddTransient<IUserMenuEntityRepository, UserMenuEntityRepository>();
-
+builder.Services.AddTransient<IEmailTemplateRepository, EmailTemplateRepository>();
 
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IMenuService, MenuService>();
 builder.Services.AddTransient<ICommonService, CommonService>();
 builder.Services.AddTransient<IDesignationService, DesignationService>();
 builder.Services.AddTransient<IUserTypeService, UserTypeService>();
+builder.Services.AddTransient<IEmailTempateService, EmailTemplateService>();
 
 builder.Services.AddDbContext<UserManagementContext>(options =>
 {

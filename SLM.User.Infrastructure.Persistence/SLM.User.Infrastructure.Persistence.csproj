@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Extensions\InitialDataSeeder.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="8.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.27" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.27">
@@ -30,6 +34,7 @@
   <ItemGroup>
     <Folder Include="Common\Utilties\" />
     <Folder Include="Common\Services\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
 
 </Project>

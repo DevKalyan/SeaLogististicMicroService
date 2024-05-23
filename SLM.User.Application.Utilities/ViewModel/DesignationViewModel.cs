@@ -8,8 +8,8 @@ namespace SLM.User.Application.Utilities.ViewModel
 {
     public class DesignationViewModel : BaseViewModel
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
-
+        public string DesignationCode { get; set; }
+        public string DesignationName { get; set; }
+        public string DesignationDetails { get; set; }
     }
 }

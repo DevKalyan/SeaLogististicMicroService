@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace SLM.User.Infrastructure.Persistence.FluentApiConfigurations
 {
-    public class UserCredentialsConfiguration : BaseEntityConfiguration<UserCredentialEntity>
+    public class UserCredentialsConfiguration : IEntityTypeConfiguration<UserCredentialEntity>
     {
         public  void Configure(EntityTypeBuilder<UserCredentialEntity> builder)
         {
 
-            builder.ToTable("dbo.TblUserCredentialDetail");
+            builder.ToTable("SLM_Master_TblUserCredentialDetail");
             builder.HasKey(u => u.EntityID);
             builder.Property(u => u.EntityID).HasColumnName("userCredentialId").HasColumnType("uniqueidentifier").IsRequired();
 
